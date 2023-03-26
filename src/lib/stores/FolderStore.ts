@@ -7,7 +7,7 @@ const initialValue = browser ? JSON.parse(window.localStorage.getItem('ab-folder
 export const folders = writable(initialValue);
 
 type Folder = {
-    id: number,
+    id: string,
     name: string
 }
 
@@ -31,15 +31,15 @@ export const addFolder = (name: string) => {
     });
 }
 
-export const deleteFolder = (id: number) => {
+export const deleteFolder = (id: string) => {
     folders.update((folders) => {
         return folders.filter((folder: Folder) => {
-            folder.id !== id
+            return folder.id !== id
         });
     });
 }
 
-export const updateFolder = (id: number, name: string) => {
+export const updateFolder = (id: string, name: string) => {
     folders.update((folders) => {
         return folders.map((folder: Folder) => {
             if (folder.id === id) {

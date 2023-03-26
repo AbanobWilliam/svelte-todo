@@ -13,10 +13,17 @@
 	};
 </script>
 
-<div class="add-folder">
-	<input type="text" placeholder="Folder Name" value={folderName} on:input={checkFolderName} />
+<div class="input-group mb-3">
+	<input
+		type="text"
+		placeholder="Folder Name"
+		value={folderName}
+		on:input={checkFolderName}
+		class="form-control"
+	/>
 	<button
 		{disabled}
+		class="btn btn-primary"
 		on:click={() => {
 			addFolder(folderName);
 			folderName = '';
