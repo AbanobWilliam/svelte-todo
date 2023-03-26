@@ -2,6 +2,7 @@
 	import '../app.scss';
 	import { folders } from '$lib/stores/FolderStore.ts';
 	import AddFolder from '$lib/components/folder/AddFolder.svelte';
+	import { deleteFolder, updateFolder } from '$lib/stores/FolderStore';
 </script>
 
 <div class="content">
@@ -16,6 +17,11 @@
 							class="list-group-item list-group-item-action d-flex align-items-center justify-content-between"
 						>
 							<a href="/folder/{folder.id}" class="text-decoration-none">{folder.name}</a>
+							<div class="buttons">
+								<button class="btn btn-danger" on:click={() => deleteFolder(folder.id)}
+									>Delete</button
+								>
+							</div>
 						</li>
 					{/each}
 				</div>
