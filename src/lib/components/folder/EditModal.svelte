@@ -5,6 +5,7 @@
 	export let showBackdrop = true;
 	export let onClosed;
 	export let folderId: string;
+
 	const modalClose = () => {
 		open = false;
 		if (onClosed) {
@@ -17,6 +18,7 @@
 		name: string;
 	};
 	let folder: Folder[];
+
 	$: {
 		folders.subscribe((folders) => {
 			return (folder = folders.filter((folder: Folder) => {
@@ -24,6 +26,7 @@
 			}));
 		});
 	}
+
 	let disabled: boolean = false;
 	let folderName: string;
 	const checkFolderName = (e) => {

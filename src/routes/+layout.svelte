@@ -2,7 +2,7 @@
 	import '../app.scss';
 	import { folders } from '$lib/stores/FolderStore.ts';
 	import AddFolder from '$lib/components/folder/AddFolder.svelte';
-	import { deleteFolder, updateFolder } from '$lib/stores/FolderStore';
+	import { deleteFolder } from '$lib/stores/FolderStore';
 	import EditModal from '$lib/components/folder/EditModal.svelte';
 
 	let showPopup = false;
