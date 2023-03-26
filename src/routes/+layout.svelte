@@ -3,6 +3,17 @@
 	import { folders } from '$lib/stores/FolderStore.ts';
 	import AddFolder from '$lib/components/folder/AddFolder.svelte';
 	import { deleteFolder, updateFolder } from '$lib/stores/FolderStore';
+	import EditModal from '$lib/components/folder/EditModal.svelte';
+
+	let showPopup = false;
+	let folderId: string = '';
+	const onShowPopup = (id: string) => {
+		showPopup = true;
+		folderId = id;
+	};
+	const onPopupClose = () => {
+		showPopup = false;
+	};
 </script>
 
 <div class="content">
@@ -21,11 +32,13 @@
 								<button class="btn btn-danger" on:click={() => deleteFolder(folder.id)}
 									>Delete</button
 								>
+								<button class="btn btn-primary" on:click={onShowPopup(folder.id)}>Update</button>
 							</div>
 						</li>
 					{/each}
 				</div>
 			</div>
+			<EditModal open={showPopup} onClosed={() => onPopupClose()} {folderId} />
 			<div class="col-md-4">
 				<slot />
 			</div>
