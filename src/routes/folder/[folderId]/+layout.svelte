@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import AddTodo from '$lib/components/todo/AddTodo.svelte';
-	import { todos } from '$lib/stores/TodoStore';
+	import { completeTodo, delteTodo, todos } from '$lib/stores/TodoStore';
 
 	let folderId: string;
 	page.subscribe((pageId) => {
@@ -18,6 +18,21 @@
 			class="list-group-item list-group-item-action d-flex align-items-center justify-content-between"
 		>
 			<a href="/folder/{todo.id}" class="text-decoration-none">{todo.name}</a>
+			<div class="buutons">
+				<button class="btn btn-danger" on:click={() => delteTodo(todo.id)}>Delete</button>
+				<button
+					class="btn"
+					class:btn-outline-success={todo.completed}
+					class:btn-outline-danger={!todo.completed}
+					on:click={() => completeTodo(todo.id)}
+				>
+					{#if todo.completed}
+						Completed
+					{:else}
+						Not Completed
+					{/if}
+				</button>
+			</div>
 		</li>
 	{/each}
 </div>

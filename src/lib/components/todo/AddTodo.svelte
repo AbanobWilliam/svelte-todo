@@ -54,6 +54,11 @@
 	<button
 		class="btn btn-primary"
 		{disabled}
-		on:click={addTodo(todoName, todoDesc, todoCompleted, folderId)}>Add Todo</button
+		on:click={() => {
+			addTodo(todoName, todoDesc, todoCompleted, folderId);
+			todoName = '';
+			todoDesc = '';
+			todoCompleted = false;
+		}}>Add Todo</button
 	>
 </div>

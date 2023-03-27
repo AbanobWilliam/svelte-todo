@@ -17,6 +17,31 @@ todos.subscribe((todos) => {
 });
 export const addTodo = (name: string, description: string, completed: boolean, folderId: string) => {
     return todos.update((todos: Todos[]) => {
-        return todos = [...todos, { id: uuidv4(), name: name, description: description, completed: completed, folderId: folderId }]
+        let existTodos = todos.filter((todo) => {
+            return todo.name === name
+        });
+        if (existTodos.length > 0) {
+            alert('This todo already exist.');
+            return todos;
+        } else {
+            return todos = [...todos, { id: uuidv4(), name: name, description: description, completed: completed, folderId: folderId }]
+        }
+    });
+
+};
+export const delteTodo = (id: string) => {
+    return todos.update((todos: Todos[]) => {
+        return todos.filter((todo) => {
+            return todo.id !== id;
+        })
+    });
+};
+export const completeTodo = (id: string) => {
+    return todos.update((todos: Todos[]) => {
+        return todos.map((todo) => {
+            if (todo.id == id) {
+                return { ...todo, completed: !todo.completed };
+            }
+        });
     });
 };
