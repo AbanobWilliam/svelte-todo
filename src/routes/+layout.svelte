@@ -7,6 +7,7 @@
 
 	let showPopup = false;
 	let folderId: string = '';
+	let folderName: string = '';
 	const onShowPopup = (id: string) => {
 		showPopup = true;
 		folderId = id;
@@ -39,7 +40,7 @@
 				</div>
 			</div>
 			<EditModal open={showPopup} onClosed={() => onPopupClose()} {folderId} />
-			<div class="col-md-4">
+			<div class="col-md-8">
 				<slot />
 			</div>
 		</div>

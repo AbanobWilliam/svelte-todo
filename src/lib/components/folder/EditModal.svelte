@@ -30,7 +30,6 @@
 	let disabled: boolean = false;
 	let folderName: string;
 	const checkFolderName = (e) => {
-		console.log(e.target.value);
 		if (e.target.value.length > 5) {
 			disabled = false;
 			folderName = e.target.value;

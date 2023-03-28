@@ -41,6 +41,20 @@ export const completeTodo = (id: string) => {
         return todos.map((todo) => {
             if (todo.id == id) {
                 return { ...todo, completed: !todo.completed };
+            } else {
+                return todo;
+            }
+        });
+    });
+};
+
+export const updateTodo = (todoId: string, todoName: string, todoDesc: string, todoCompleted: boolean) => {
+    return todos.update((todos: Todos[]) => {
+        return todos.map((todo) => {
+            if (todo.id == todoId) {
+                return { ...todo, name: todoName, description: todoDesc, completed: todoCompleted };
+            } else {
+                return todo;
             }
         });
     });

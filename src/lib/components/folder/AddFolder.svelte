@@ -27,6 +27,7 @@
 		on:click={() => {
 			addFolder(folderName);
 			folderName = '';
+			disabled = true;
 		}}>Add Folder</button
 	>
 </div>

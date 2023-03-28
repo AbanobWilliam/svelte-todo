@@ -2,24 +2,22 @@
 	import { addTodo } from '$lib/stores/TodoStore';
 
 	export let folderId: string;
-	let disabled: boolean = true;
+	let disabled: boolean = false;
 	let todoName: string = '';
 	let todoDesc: string = '';
 	let todoCompleted: boolean = false;
 	const checkTodoNameValue = (e) => {
 		todoName = e.target.value;
-		if (todoName.length > 3 && todoDesc.length > 10) {
+		if (todoName.length > 3) {
 			disabled = false;
-			todoName = e.target.value;
 		} else {
 			disabled = true;
 		}
 	};
 	const checkTodoDescValue = (e) => {
 		todoDesc = e.target.value;
-		if (todoDesc.length > 10 && todoName.length > 3) {
+		if (todoDesc.length > 10) {
 			disabled = false;
-			todoDesc = e.target.value;
 		} else {
 			disabled = true;
 		}
@@ -59,6 +57,7 @@
 			todoName = '';
 			todoDesc = '';
 			todoCompleted = false;
+			disabled = true;
 		}}>Add Todo</button
 	>
 </div>
